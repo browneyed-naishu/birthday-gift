@@ -1,0 +1,282 @@
+﻿ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love! ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ff758c;
+            --secondary-pink: #ff7eb3;
+            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            --text-color: #4a4a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
+
+        /* Page Structure */
+        .page {
+            display: none;
+            width: 90%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 117, 140, 0.3);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.8s ease-in-out forwards;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Typography & Elements */
+        h1 {
+            font-size: 2.5rem;
+            color: #d81b60;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .emoji-large {
+            font-size: 4rem;
+            margin: 20px 0;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.6);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: #ffe5ec;
+            color: var(--primary-pink);
+            box-shadow: none;
+        }
+
+        /* Card Options (Page 2) */
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .option-card {
+            background: white;
+            border: 2px solid #ffccd5;
+            border-radius: 15px;
+            padding: 20px;
+            width: 45%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-pink);
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.2);
+        }
+
+        .option-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        /* Flower Display */
+        .flower-bouquet {
+            font-size: 6rem;
+            animation: pulse 2s infinite;
+            margin: 20px 0;
+        }
+
+        /* Letter Styling */
+        .letter-content {
+            background: #fffdf9;
+            border-left: 5px solid var(--primary-pink);
+            padding: 20px;
+            text-align: left;
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Floating Hearts Background Animation */
+        .heart-bg {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            color: rgba(255, 117, 140, 0.2);
+            z-index: -1;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts Container -->
+    <div id="hearts-container"></div>
+
+    <!-- PAGE 1: Welcome -->
+    <div id="page1" class="page active">
+        <h1>HAPPY BIRTHDAY <br>baby 🥰❤️✨</h1>
+        <div class="emoji-large">🎂🥳💖</div>
+        <p>I made something incredibly special just for you. Click below to see!</p>
+        <button class="btn" onclick="navigateTo('page2')">Next 👉</button>
+    </div>
+
+    <!-- PAGE 2: Options Menu -->
+    <div id="page2" class="page">
+        <h1>Pick a Gift 🎁</h1>
+        <p>I have two little surprises for you. Which one do you want to open first?</p>
+        
+        <div class="options-container">
+            <div class="option-card" onclick="navigateTo('pageLetter')">
+                <div style="font-size: 3rem;">💌</div>
+                <h3>Love Letter</h3>
+            </div>
+            <div class="option-card" onclick="navigateTo('pageFlower')">
+                <div style="font-size: 3rem;">💐</div>
+                <h3>Flowers</h3>
+            </div>
+        </div>
+
+        <button class="btn" onclick="navigateTo('pageLast')">Next 👉</button>
+    </div>
+
+    <!-- PAGE: Letter Surprise -->
+    <div id="pageLetter" class="page">
+        <h1>For My Favorite Human 📝</h1>
+        <div class="letter-content">
+            <p>Happy Birthday, my love! Words will never be enough to express how much you mean to me. You are my safe place, my happiest laugh, and my absolute favorite person in the world. Thank you for bringing so much light, warmth, and endless joy into my life. Your smile makes even my hardest days beautiful, and being loved by you is the greatest gift I could ever ask for. I hope your day is as wonderfully amazing and perfect as you are. I love you to the moon and back, forever and always. Happy Birthday, baby! ❤️</p>
+        </div>
+        <br>
+        <button class="btn btn-secondary" onclick="navigateTo('page2')">👈 Back</button>
+    </div>
+
+    <!-- PAGE: Flower Surprise -->
+    <div id="pageFlower" class="page">
+        <h1>This is for u cutie 🌹</h1>
+        <div class="flower-bouquet">💐🌸🌹🌻</div>
+        <p>A beautiful virtual bouquet for the most beautiful person in my life. I wish I could give these to you in person right now! 💖</p>
+        <button class="btn btn-secondary" onclick="navigateTo('page2')">👈 Back</button>
+    </div>
+
+    <!-- PAGE 3: Final Page -->
+    <div id="pageLast" class="page">
+        <h1>happy birthdayy baby babe 😍❤️✨</h1>
+        <div class="emoji-large">👑🥂🎈🎉💋</div>
+        <p>I hope this brought a huge smile to your gorgeous face today. Cheers to celebrating you today and every single day after. You deserve the entire universe!</p>
+        <button class="btn" onclick="navigateTo('page1')">Restart 🔄</button>
+    </div>
+
+    <script>
+        // Simple Page Navigation Logic
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+        }
+
+        // Background Floating Hearts Generator
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            
+            // Array of cute symbols
+            const symbols = ['❤️', '💖', '✨', '🥰', '🌸'];
+            heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's'; // Between 3s and 6s
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px'; // Between 15px and 30px
+            
+            document.getElementById('hearts-container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Generate hearts continuously
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
